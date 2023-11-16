@@ -7,8 +7,6 @@ import {
   MenubarContent,
   MenubarItem,
   MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { themes, defaultMode } from "@/constants/constants";
@@ -18,10 +16,10 @@ const GetCurrentTheme = (mode: string) => {
     (x) =>
       x.value === (localStorage.theme !== undefined ? localStorage.theme : mode)
   );
-  if (theme === undefined) {
-    return defaultMode;
+  if (theme !== undefined) {
+    return theme;
   }
-  return theme;
+  return defaultMode;
 };
 
 const Theme = () => {
