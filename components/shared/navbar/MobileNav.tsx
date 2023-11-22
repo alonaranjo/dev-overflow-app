@@ -12,6 +12,7 @@ import Image from "next/image";
 import { SignedOut } from "@clerk/nextjs";
 import { sidebarLinks } from "@/constants/constants";
 import { usePathname } from "next/navigation";
+import MenuItem from "../MenuItem";
 
 const NavContent = () => {
   const pathname = usePathname();
@@ -23,25 +24,7 @@ const NavContent = () => {
           pathname === item.route;
         return (
           <SheetClose asChild key={item.route}>
-            <Link
-              href={item.route}
-              className={`${
-                isActive
-                  ? "primary-gradient rounded-lg text-light-900"
-                  : "text-dark300_light900"
-              } flex items-center justify-start gap-4 bg-transparent p-4`}
-            >
-              <Image
-                src={item.imgURL}
-                alt="item.label"
-                width={20}
-                height={20}
-                className={`${isActive ? "" : "invert-colors"}`}
-              />
-              <p className={`${isActive ? "base-bold" : "base-medium"}`}>
-                {item.label}
-              </p>
-            </Link>
+            <MenuItem item={item} isActive={isActive} />
           </SheetClose>
         );
       })}

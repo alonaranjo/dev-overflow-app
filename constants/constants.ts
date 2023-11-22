@@ -81,3 +81,22 @@ export const BADGE_CRITERIA = {
     GOLD: 100000,
   },
 };
+
+export const hotQuestions = [
+  { _id: 1, title: "How do I use express as a custom server in NextJS?" },
+  { _id: 2, title: "Cascading deletes in SQLAlchemy?" },
+  { _id: 3, title: "How to perfectly center a div with Taildinwd CSS" },
+  {
+    _id: 4,
+    title: "Best practices for data fetching in a Next.js application?",
+  },
+  { _id: 5, title: "Redux toolkit not updating state as a expected?" },
+];
+
+export const popularTags = [
+  { _id: 1, name: "Javascript", totalQuestions: 5 },
+  { _id: 2, name: "NextJS", totalQuestions: 52 },
+  { _id: 3, name: "MongoDB", totalQuestions: 59 },
+  { _id: 4, name: "JQuery", totalQuestions: 200 },
+  { _id: 5, name: "Scrum", totalQuestions: 2 },
+];
