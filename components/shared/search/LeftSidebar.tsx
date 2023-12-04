@@ -21,8 +21,8 @@ const LeftSidebar = () => {
             (pathname.includes(item.route) && item.route.length > 1) ||
             pathname === item.route;
           return (
-            <section>
-              <MenuItem key={item.route} item={item} isActive={isActive} />
+            <section key={item.route}>
+              <MenuItem item={item} isActive={isActive} />
             </section>
           );
         })}
