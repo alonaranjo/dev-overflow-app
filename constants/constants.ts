@@ -94,9 +94,9 @@ export const hotQuestions = [
 ];
 
 export const popularTags = [
-  { _id: 1, name: "Javascript", totalQuestions: 5 },
-  { _id: 2, name: "NextJS", totalQuestions: 52 },
-  { _id: 3, name: "MongoDB", totalQuestions: 59 },
-  { _id: 4, name: "JQuery", totalQuestions: 200 },
-  { _id: 5, name: "Scrum", totalQuestions: 2 },
+  { _id: "1", name: "Javascript", totalQuestions: 5 },
+  { _id: "2", name: "NextJS", totalQuestions: 52 },
+  { _id: "3", name: "MongoDB", totalQuestions: 59 },
+  { _id: "4", name: "JQuery", totalQuestions: 200 },
+  { _id: "5", name: "Scrum", totalQuestions: 2 },
 ];

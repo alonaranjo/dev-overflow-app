@@ -8,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import HomeFilters from "../home/HomeFilters";
 
 interface FilterProps {
   filters: {
@@ -21,7 +20,7 @@ interface FilterProps {
 
 const Filter = ({ filters, otherClasses, containerClasses }: FilterProps) => {
   return (
-    <div className={`relative ${containerClasses} flex-col`}>
+    <div className={`relative ${containerClasses}`}>
       <Select>
         <SelectTrigger
           className={`${otherClasses} body-regular light-border 
@@ -42,7 +41,6 @@ const Filter = ({ filters, otherClasses, containerClasses }: FilterProps) => {
           </SelectGroup>
         </SelectContent>
       </Select>
-      <HomeFilters />
     </div>
   );
 };
