@@ -5,38 +5,11 @@ import NoResult from "@/components/shared/NoResult";
 import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
+import { getQuestions } from "@/lib/actions/question.action";
 import Link from "next/link";
 
-const questions = [
-  {
-    _id: "1",
-    title: "Cascading Deletes in SQLAlchemy?",
-    tags: [
-      { _id: "1", name: "SQL" },
-      { _id: "2", name: "Python" },
-    ],
-    author: { _id: "1", name: "John Doe", picture: "johnDoe.jpg" },
-    upvotes: 150000,
-    views: 100000000,
-    answers: [],
-    createdAt: new Date("2021-09-01T12:00:00.00z"),
-  },
-  {
-    _id: "2",
-    title: "Cascading Deletes in SQL Admin?",
-    tags: [
-      { _id: "1", name: "MS SQL" },
-      { _id: "2", name: "C#" },
-    ],
-    author: { _id: "1", name: "Dora Boa", picture: "Doraboa.jpg" },
-    upvotes: 3,
-    views: 123,
-    answers: [],
-    createdAt: new Date("2022-09-01T12:00:00.00z"),
-  },
-];
-
-export default function Home() {
+export default async function Home() {
+  const result = await getQuestions({});
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:items-center sm:flex-row">
@@ -63,8 +36,8 @@ export default function Home() {
       </div>
       <HomeFilters />
       <div className="mt-10 flex w-full flex-col gap-6">
-        {questions.length > 0 ? (
-          questions.map((item) => (
+        {result.questions.length > 0 ? (
+          result.questions.map((item) => (
             <QuestionCard
               key={item._id}
               _id={item._id}

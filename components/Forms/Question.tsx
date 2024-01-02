@@ -20,12 +20,19 @@ import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Badge } from "../ui/badge";
 import { createQuestion } from "@/lib/actions/question.action";
+import { useRouter, usePathname } from "next/navigation";
 
 const type: any = "create";
 
-const Question = () => {
+interface questioProps {
+  mongoUserId: string;
+}
+
+const Question = ({ mongoUserId }: questioProps) => {
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
+  const pathName = usePathname();
 
   const form = useForm<z.infer<typeof QuestionSchema>>({
     resolver: zodResolver(QuestionSchema),
@@ -72,7 +79,14 @@ const Question = () => {
   async function onSubmit(values: z.infer<typeof QuestionSchema>) {
     setIsSubmitting(true);
     try {
-      await createQuestion({});
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+        path: pathName,
+      });
+      router.push("/");
     } catch (error) {
     } finally {
       setIsSubmitting(true);
@@ -154,7 +168,7 @@ const Question = () => {
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
                 Introduce the problem and expand on what you put in the title.
-                Minimum 20 characters.
+                Minimum 100 characters.
               </FormDescription>
               <FormMessage className="text-red-500" />
             </FormItem>
