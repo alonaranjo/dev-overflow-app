@@ -2,13 +2,65 @@
 
 import User from "@/database/user.model";
 import { connectToDatabase } from "../mongoose";
-import { getUserByIdParams } from "./shared.types";
+import {
+  CreateUserParams,
+  DeleteUserParams,
+  UpdateUserParams,
+  getUserByIdParams,
+} from "./shared.types";
+import { revalidatePath } from "next/cache";
+import Question from "@/database/questions.model";
 
 export async function getUserById(params: getUserByIdParams) {
   try {
     connectToDatabase();
     const { userId } = params;
     return await User.findOne({ clerkId: userId });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function createUser(userData: CreateUserParams) {
+  try {
+    connectToDatabase();
+    return await User.create(userData);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function updateUser(userData: UpdateUserParams) {
+  try {
+    connectToDatabase();
+    const { clerkId, updateData, path } = userData;
+    await User.findOneAndUpdate({ clerkId }, updateData, { new: true });
+    revalidatePath(path);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function deleteUser(userData: DeleteUserParams) {
+  try {
+    connectToDatabase();
+    const { clerkId } = userData;
+    const user = await User.findOneAndDelete({ clerkId });
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    const userQuestionIds = await Question.find({ author: user._id }).distinct(
+      "_id"
+    );
+
+    await Question.deleteMany({ author: user._id });
+    return user;
+    //Think next line it´s not required, will test it
+    //return await User.findByIdAndDelete(user._id);
   } catch (error) {
     console.log(error);
     throw error;
