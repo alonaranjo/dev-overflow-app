@@ -1,10 +1,11 @@
 "use server";
-//Comment to remove
+
 import User from "@/database/user.model";
 import { connectToDatabase } from "../mongoose";
 import {
   CreateUserParams,
   DeleteUserParams,
+  GetAllUsersParams,
   UpdateUserParams,
   getUserByIdParams,
 } from "./shared.types";
@@ -16,6 +17,18 @@ export async function getUserById(params: getUserByIdParams) {
     connectToDatabase();
     const { userId } = params;
     return await User.findOne({ clerkId: userId });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function getAllUsers(params: GetAllUsersParams) {
+  try {
+    connectToDatabase();
+    const { page = 1, pageSize = 20, filter, searchQuery } = params;
+    const users = await User.find({}).sort({ createdAt: -1 });
+    return { users };
   } catch (error) {
     console.log(error);
     throw error;
