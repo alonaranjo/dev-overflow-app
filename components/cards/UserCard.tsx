@@ -1,5 +1,4 @@
 import { getTopInteractedTags } from "@/lib/actions/tags.actions";
-import { User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
@@ -27,13 +26,15 @@ const UserCard = async ({ user }: UserCardProps) => {
       flex w-full flex-col items-center justify-center 
       rounded-2x1 border p-8"
       >
-        <Image
-          src={user.picture}
-          alt="User Profile Picture"
-          width={100}
-          height={100}
-          className="rounded-full"
-        />
+        {user.picture && (
+          <Image
+            src={user.picture}
+            alt="User Profile Picture"
+            width={100}
+            height={100}
+            className="rounded-full"
+          />
+        )}
         <div className="mt-4 text-center">
           <h3 className="h3-bold text-dark200_light900 line-clamp-1">
             {user.name}
