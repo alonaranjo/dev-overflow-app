@@ -12,7 +12,7 @@ import {
 import { revalidatePath } from "next/cache";
 import Question from "@/database/questions.model";
 
-export async function getUserByIdxd(params: getUserByIdParams) {
+export async function getUserById(params: getUserByIdParams) {
   try {
     connectToDatabase();
     const { userId } = params;
@@ -23,7 +23,7 @@ export async function getUserByIdxd(params: getUserByIdParams) {
   }
 }
 
-export async function getAllUsersxd(params: GetAllUsersParams) {
+export async function getAllUsers(params: GetAllUsersParams) {
   try {
     connectToDatabase();
     const { page = 1, pageSize = 20, filter, searchQuery } = params;
@@ -35,7 +35,7 @@ export async function getAllUsersxd(params: GetAllUsersParams) {
   }
 }
 
-export async function createUserxd(userData: CreateUserParams) {
+export async function createUser(userData: CreateUserParams) {
   try {
     connectToDatabase();
     return await User.create(userData);
@@ -45,7 +45,7 @@ export async function createUserxd(userData: CreateUserParams) {
   }
 }
 
-export async function updateUserxd(userData: UpdateUserParams) {
+export async function updateUser(userData: UpdateUserParams) {
   try {
     connectToDatabase();
     const { clerkId, updateData, path } = userData;
@@ -60,7 +60,7 @@ export async function updateUserxd(userData: UpdateUserParams) {
   }
 }
 
-export async function deleteUserxd(userData: DeleteUserParams) {
+export async function deleteUser(userData: DeleteUserParams) {
   try {
     connectToDatabase();
     const { clerkId } = userData;

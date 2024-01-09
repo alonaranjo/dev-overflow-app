@@ -2,11 +2,11 @@ import Filter from "@/components/shared/Filter";
 import NoResult from "@/components/shared/NoResult";
 import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import { UserFilters } from "@/constants/filters";
-//import { getAllTags } from "@/lib/actions/tags.actions";
+import { getAllTags } from "@/lib/actions/tags.actions";
 import Link from "next/link";
 
 const Tags = async () => {
-  //const result = await getAllTags({});
+  const result = await getAllTags({});
   return (
     <>
       <h1 className="h1-bold text-dark100_light900">All Tags</h1>
@@ -23,7 +23,7 @@ const Tags = async () => {
           otherClasses="min-h-[56px] sm:min-w[170px]"
         />
       </div>
-      {/**<section className="mt-12 flex flex-wrap gap-4">
+      <section className="mt-12 flex flex-wrap gap-4">
         {result.tags.length > 0 ? (
           result.tags.map((tag) => (
             <Link
@@ -58,7 +58,7 @@ const Tags = async () => {
             linkTitle="Ask a question"
           />
         )}
-      </section> */}
+      </section>
     </>
   );
 };
