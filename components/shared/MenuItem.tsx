@@ -19,7 +19,7 @@ const MenuItem = ({ item, isActive }: menuItemProps) => {
     >
       <Image
         src={item.imgURL}
-        alt="item.label"
+        alt={item.label}
         width={20}
         height={20}
         className={`${isActive ? "" : "invert-colors"}`}

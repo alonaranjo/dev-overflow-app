@@ -11,8 +11,18 @@ export const defaultMode = {
 };
 
 export const themes = [
-  { value: "light", label: "Light", icon: "/assets/icons/sun.svg", alt: "sun" },
-  { value: "dark", label: "Dark", icon: "/assets/icons/moon.svg", alt: "moon" },
+  {
+    value: "light",
+    label: "Light",
+    icon: "/assets/icons/computer.svg",
+    alt: "computer",
+  },
+  {
+    value: "dark",
+    label: "Dark",
+    icon: "/assets/icons/computer.svg",
+    alt: "computer",
+  },
   defaultMode,
 ];
 
