@@ -19,7 +19,7 @@ import { QuestionSchema } from "@/lib/validations";
 import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Badge } from "../ui/badge";
-import { createQuestion } from "@/lib/actions/question.action";
+//import { createQuestion } from "@/lib/actions/question.action";
 import { useRouter, usePathname } from "next/navigation";
 
 const type: any = "create";
@@ -79,13 +79,13 @@ const Question = ({ mongoUserId }: questioProps) => {
   async function onSubmit(values: z.infer<typeof QuestionSchema>) {
     setIsSubmitting(true);
     try {
-      await createQuestion({
+      /*await createQuestion({
         title: values.title,
         content: values.explanation,
         tags: values.tags,
         author: JSON.parse(mongoUserId),
         path: pathName,
-      });
+      });*/
       router.push("/");
     } catch (error) {
     } finally {
