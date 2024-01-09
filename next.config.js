@@ -5,7 +5,16 @@ const nextConfig = {
     serverComponentsExternalPackages: ["mongoose"],
   },
   images: {
-    domains: ["https://media.istockphoto.com/"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*",
+      },
+      {
+        protocol: "http",
+        hostname: "*",
+      },
+    ],
   },
 };
 
