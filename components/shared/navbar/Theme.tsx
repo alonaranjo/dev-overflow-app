@@ -12,15 +12,12 @@ import {
 import { themes, defaultMode } from "@/constants/constants";
 
 const GetCurrentTheme = (mode: string) => {
-  if (typeof window !== "undefined") {
-    let theme = themes.find(
-      (x) =>
-        x.value ===
-        (localStorage.theme !== undefined ? localStorage.theme : mode)
-    );
-    if (theme !== undefined) {
-      return theme;
-    }
+  let theme = themes.find(
+    (x) =>
+      x.value === (localStorage.theme !== undefined ? localStorage.theme : mode)
+  );
+  if (theme !== undefined) {
+    return theme;
   }
   return defaultMode;
 };

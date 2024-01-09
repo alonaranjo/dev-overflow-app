@@ -1,3 +1,5 @@
+"use server";
+
 import { IUser } from "@/database/user.model";
 import { Schema } from "mongoose";
 
