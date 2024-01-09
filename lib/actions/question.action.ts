@@ -7,7 +7,7 @@ import { CreateQuestionParams, GetQuestionsParams } from "./shared.types";
 import User from "@/database/user.model";
 import { revalidatePath } from "next/cache";
 
-export async function getQuestions(params: GetQuestionsParams) {
+export async function getQuestionsxd(params: GetQuestionsParams) {
   try {
     connectToDatabase();
     const questions = await Question.find({})
@@ -21,7 +21,7 @@ export async function getQuestions(params: GetQuestionsParams) {
   }
 }
 
-export async function createQuestion(params: CreateQuestionParams) {
+export async function createQuestionxd(params: CreateQuestionParams) {
   try {
     connectToDatabase();
     const { title, content, tags, author, path } = params;

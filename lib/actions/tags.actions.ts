@@ -5,7 +5,9 @@ import { connectToDatabase } from "../mongoose";
 import { GetAllTagsParams, GetTopInteractedTagsParams } from "./shared.types";
 import Tag from "@/database/tag.model";
 
-export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
+export async function getTopInteractedTagsxd(
+  params: GetTopInteractedTagsParams
+) {
   try {
     connectToDatabase();
     const { userId, limit = 3 } = params;
@@ -24,7 +26,7 @@ export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
   }
 }
 
-export async function getAllTags(params: GetAllTagsParams) {
+export async function getAllTagsxd(params: GetAllTagsParams) {
   try {
     connectToDatabase();
     const tags = await Tag.find({});

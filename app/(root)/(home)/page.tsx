@@ -5,11 +5,11 @@ import NoResult from "@/components/shared/NoResult";
 import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
-import { getQuestions } from "@/lib/actions/question.action";
+//import { getQuestions } from "@/lib/actions/question.action";
 import Link from "next/link";
 
 export default async function Home() {
-  const result = await getQuestions({});
+  //const result = await getQuestions({});
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:items-center sm:flex-row">
@@ -35,7 +35,8 @@ export default async function Home() {
         />
       </div>
       <HomeFilters />
-      <div className="mt-10 flex w-full flex-col gap-6">
+
+      {/** <div className="mt-10 flex w-full flex-col gap-6">
         {result.questions.length > 0 ? (
           result.questions.map((item) => (
             <QuestionCard
@@ -60,7 +61,7 @@ export default async function Home() {
             linkTitle="Ask a Question"
           />
         )}
-      </div>
+      </div> */}
     </>
   );
 }
