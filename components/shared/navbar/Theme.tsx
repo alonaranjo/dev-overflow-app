@@ -10,11 +10,17 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { themes, defaultMode } from "@/constants/constants";
+import { useEffect, useState } from "react";
 
 const GetCurrentTheme = (mode: string) => {
+  const [lSTheme, setLSTheme] = useState("");
+  useEffect(() => {
+    const localStorageTheme = localStorage.theme;
+    setLSTheme(localStorageTheme);
+  }, []);
+
   let theme = themes.find(
-    (x) =>
-      x.value === (localStorage.theme !== undefined ? localStorage.theme : mode)
+    (x) => x.value === (lSTheme !== undefined ? lSTheme : mode)
   );
   if (theme !== undefined) {
     return theme;
