@@ -53,7 +53,6 @@ export async function updateUser(userData: UpdateUserParams) {
       new: true,
     });
     revalidatePath(path);
-    return userUpdated;
   } catch (error) {
     console.log(error);
     throw error;
@@ -74,9 +73,7 @@ export async function deleteUser(userData: DeleteUserParams) {
     );
 
     await Question.deleteMany({ author: user._id });
-    return user;
-    //Think next line it´s not required, will test it
-    //return await User.findByIdAndDelete(user._id);
+    return await User.findByIdAndDelete(user._id);
   } catch (error) {
     console.log(error);
     throw error;
