@@ -17,7 +17,7 @@ const RightSidebar = () => {
             return (
               <Link
                 key={question._id}
-                href={`/questions/${question._id}`}
+                href={`/question/${question._id}`}
                 className="flex cursor-pointer items-center justify-between gap-7"
               >
                 <p className="body-medium text-dark500_light700">
