@@ -47,7 +47,18 @@ const AllAnswers = async ({ questionId, userId, totalAnswers }: props) => {
                     </p>
                   </div>
                 </Link>
-                <div className="flex justify-end">VOTING</div>
+                <div className="flex justify-end">
+                  <Votes
+                    type="answer"
+                    itemId={JSON.stringify(answer._id)}
+                    userId={JSON.stringify(userId)}
+                    upvotes={answer.upvotes.lenght}
+                    hasupVoted={answer.upvotes.includes(userId)}
+                    downvotes={answer.downvotes.lenght}
+                    hasdownVoted={answer.downvotes.includes(userId)}
+                    hasSaved={false}
+                  />
+                </div>
               </div>
             </div>
             <ParseHTML data={answer.content} />
