@@ -54,7 +54,6 @@ const QuestionCard = ({
           isAuthor
           textStyles="body-medium text-dark400_light700"
         />
-
         <Metric
           imgUrl="/assets/icons/like.svg"
           alt="Upvotes"
